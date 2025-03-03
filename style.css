@@ -1,0 +1,1250 @@
+/*
+Theme Name: Casino Review Pro
+Theme URI: https://example.com/casino-review-pro/
+Author: Your Name
+Author URI: https://example.com/
+Description: A premium WordPress theme for casino review websites with advanced comparison tools, rating systems, and bonus tracking.
+Version: 1.0.0
+Requires at least: 5.6
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: casino-review-pro
+Tags: casino, reviews, gambling, comparison, ratings, responsive
+*/
+
+/* 
+This is the main style.css file for the Casino Review Pro WordPress theme.
+Below is a table of contents for the CSS organization:
+
+1. CSS Variables & Resets
+2. Typography
+3. Layout & Grid
+4. Header Styles
+5. Navigation
+6. Casino Cards & Lists
+7. Rating System
+8. Comparison Tables
+9. Bonus Highlights
+10. Widgets & Sidebars
+11. Footer
+12. Responsive Styles
+13. Dark Mode
+14. Custom Post Types Styling
+*/
+
+/* 1. CSS Variables & Resets */
+:root {
+    --primary: #ff5722;
+    --primary-dark: #e64a19;
+    --secondary: #3498db;
+    --secondary-dark: #2980b9;
+    --accent: #ffc107;
+    --dark: #2c3e50;
+    --light: #f5f5f5;
+    --white: #ffffff;
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+    --radius-sm: 4px;
+    --radius-lg: 12px;
+    --transition: all 0.3s ease;
+    --header-height: 80px;
+    --container-width: 1200px;
+    --sidebar-width: 300px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--gray-100);
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+ul, ol {
+    list-style-position: inside;
+}
+
+/* 2. Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+.text-success {
+    color: var(--success);
+}
+
+.text-warning {
+    color: var(--warning);
+}
+
+.text-danger {
+    color: var(--danger);
+}
+
+.text-small {
+    font-size: 0.875rem;
+}
+
+.text-large {
+    font-size: 1.25rem;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* 3. Layout & Grid */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col {
+    flex: 1 0 0%;
+    padding: 0 15px;
+}
+
+.col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 15px;
+}
+
+.col-md-6 {
+    flex: 0 0 calc(50% - 30px);
+    max-width: calc(50% - 30px);
+    padding: 0 15px;
+}
+
+.col-lg-4 {
+    flex: 0 0 calc(33.333333% - 30px);
+    max-width: calc(33.333333% - 30px);
+    padding: 0 15px;
+}
+
+.col-lg-8 {
+    flex: 0 0 calc(66.666667% - 30px);
+    max-width: calc(66.666667% - 30px);
+    padding: 0 15px;
+}
+
+.section {
+    padding: 4rem 0;
+}
+
+.section-sm {
+    padding: 2rem 0;
+}
+
+.section-lg {
+    padding: 6rem 0;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-20 {
+    gap: 20px;
+}
+
+.gap-30 {
+    gap: 30px;
+}
+
+/* 4. Header Styles */
+.site-header {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+}
+
+.site-branding {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    max-height: 50px;
+    width: auto;
+}
+
+.site-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+
+.site-description {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    margin-bottom: 0;
+}
+
+/* 5. Navigation */
+.main-navigation {
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--dark);
+    cursor: pointer;
+}
+
+.primary-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-menu li {
+    position: relative;
+    margin-left: 1.5rem;
+}
+
+.primary-menu a {
+    color: var(--dark);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    display: block;
+    position: relative;
+}
+
+.primary-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+}
+
+.primary-menu a:hover::after,
+.primary-menu .current-menu-item a::after {
+    width: 100%;
+}
+
+.primary-menu .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius-sm);
+    min-width: 200px;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+    z-index: 100;
+}
+
+.primary-menu li:hover > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.primary-menu .sub-menu li {
+    margin: 0;
+}
+
+.primary-menu .sub-menu a {
+    padding: 0.5rem 1rem;
+}
+
+.primary-menu .sub-menu a::after {
+    display: none;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+}
+
+.search-field {
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    transition: var(--transition);
+}
+
+.search-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.1);
+}
+
+.search-submit {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-submit:hover {
+    background-color: var(--primary-dark);
+}
+
+/* 6. Casino Cards & Lists */
+.casino-card {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: var(--transition);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.casino-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+}
+
+.casino-logo-wrapper {
+    flex: 0 0 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--gray-100);
+    border-radius: var(--radius-sm);
+    margin-right: 1.5rem;
+}
+
+.casino-logo {
+    max-width: 100%;
+    max-height: 80px;
+}
+
+.casino-content {
+    flex: 1;
+}
+
+.casino-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.casino-description {
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+}
+
+.casino-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+.meta-item i {
+    margin-right: 0.5rem;
+    color: var(--primary);
+}
+
+.casino-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    color: var(--white);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+/* 7. Rating System */
+.rating-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.rating-score {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+}
+
+.rating-text {
+    flex: 1;
+}
+
+.rating-title {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.rating-description {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+.rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.star {
+    color: var(--gray-300);
+    font-size: 1.25rem;
+}
+
+.star.filled {
+    color: var(--warning);
+}
+
+.rating-bar {
+    height: 10px;
+    background-color: var(--gray-200);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.rating-progress {
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+
+/* 8. Comparison Tables */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.comparison-table th {
+    background-color: var(--gray-100);
+    font-weight: 700;
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tr:hover {
+    background-color: var(--gray-100);
+}
+
+.feature-available {
+    color: var(--success);
+    font-size: 1.25rem;
+}
+
+.feature-unavailable {
+    color: var(--danger);
+    font-size: 1.25rem;
+}
+
+/* 9. Bonus Highlights */
+.bonus-card {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--primary);
+}
+
+.bonus-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.bonus-title {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.bonus-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.bonus-description {
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+}
+
+.bonus-terms {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    padding: 0.75rem;
+    background-color: var(--gray-100);
+    border-radius: var(--radius-sm);
+}
+
+.bonus-cta {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* 10. Widgets & Sidebars */
+.widget {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.widget-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.popular-casinos-widget .casino-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.popular-casinos-widget .casino-item:last-child {
+    border-bottom: none;
+}
+
+.popular-casinos-widget .casino-logo-small {
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 1rem;
+}
+
+.popular-casinos-widget .casino-name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.popular-casinos-widget .casino-bonus {
+    font-size: 0.875rem;
+    color: var(--primary);
+}
+
+.newsletter-widget .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.newsletter-widget .form-control {
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+}
+
+.newsletter-widget .form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.1);
+}
+
+/* 11. Footer */
+.site-footer {
+    background-color: var(--dark);
+    color: var(--gray-300);
+    padding: 4rem 0 2rem;
+}
+
+.footer-widgets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-widget-title {
+    color: var(--white);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.footer-widget-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary);
+}
+
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-menu li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-menu a {
+    color: var(--gray-300);
+    transition: var(--transition);
+}
+
+.footer-menu a:hover {
+    color: var(--primary);
+}
+
+.footer-contact-info {
+    margin-bottom: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.contact-item i {
+    color: var(--primary);
+    margin-right: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    font-size: 0.875rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.footer-links a {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+/* 12. Responsive Styles */
+@media (max-width: 1200px) {
+    :root {
+        --container-width: 992px;
+    }
+}
+
+@media (max-width: 992px) {
+    :root {
+        --container-width: 768px;
+        --sidebar-width: 100%;
+    }
+    
+    .footer-widgets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .col-lg-4,
+    .col-lg-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --container-width: 100%;
+        --header-height: 70px;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .primary-menu {
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        padding: 1rem 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: var(--transition);
+    }
+    
+    .menu-open .primary-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .primary-menu li {
+        margin: 0;
+    }
+    
+    .primary-menu a {
+        padding: 0.75rem 1.5rem;
+    }
+    
+    .primary-menu .sub-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding-left: 1.5rem;
+        width: 100%;
+        display: none;
+    }
+    
+    .primary-menu li.menu-item-has-children > a::after {
+        content: '+';
+        margin-left: 0.5rem;
+    }
+    
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .casino-card {
+        flex-direction: column;
+    }
+    
+    .casino-logo-wrapper {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+        width: 100%;
+    }
+    
+    .footer-widgets {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .section {
+        padding: 2rem 0;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+    
+    .casino-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .comparison-table {
+        font-size: 0.875rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.5rem;
+    }
+}
+
+/* 13. Dark Mode */
+.dark-mode {
+    --light: #1a1a2e;
+    --dark: #e9ecef;
+    --white: #16213e;
+    --gray-100: #0f3460;
+    --gray-200: #1a1a2e;
+    --gray-300: #2a2a4a;
+    --gray-400: #3a3a5a;
+    --gray-600: #a0aec0;
+    --gray-700: #cbd5e0;
+    --gray-800: #e2e8f0;
+    --gray-900: #f7fafc;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode body {
+    color: var(--gray-300);
+    background-color: var(--light);
+}
+
+.dark-mode .site-header,
+.dark-mode .widget,
+.dark-mode .casino-card,
+.dark-mode .bonus-card,
+.dark-mode .comparison-table {
+    background-color: var(--white);
+}
+
+.dark-mode .comparison-table th {
+    background-color: var(--gray-100);
+}
+
+.dark-mode .comparison-table td {
+    border-bottom-color: var(--gray-300);
+}
+
+.dark-mode .bonus-terms {
+    background-color: var(--gray-100);
+}
+
+.dark-mode .search-field {
+    background-color: var(--gray-100);
+    border-color: var(--gray-300);
+    color: var(--gray-700);
+}
+
+.dark-mode .newsletter-widget .form-control {
+    background-color: var(--gray-100);
+    border-color: var(--gray-300);
+    color: var(--gray-700);
+}
+
+/* 14. Custom Post Types Styling */
+.game-card {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    margin-bottom: 2rem;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.game-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.game-content {
+    padding: 1.5rem;
+}
+
+.game-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.game-provider {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+}
+
+.game-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.game-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.game-rtp {
+    font-weight: 600;
+}
+
+.game-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-200);
+}
+
+.game-casinos {
+    font-size: 0.875rem;
+}
+
+/* Payment Methods Styling */
+.payment-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 50px;
+    background-color: var(--white);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    padding: 0.5rem;
+}
+
+.payment-method img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Filter System */
+.filter-bar {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.filter-select,
+.filter-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    background-color: var(--white);
+}
+
+.filter-submit {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-submit:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.page-numbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--white);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.page-numbers.current {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.page-numbers:hover:not(.current) {
+    background-color: var(--gray-100);
+}
+
+.page-numbers.prev,
+.page-numbers.next {
+    width: auto;
+    padding: 0 1rem;
+}
